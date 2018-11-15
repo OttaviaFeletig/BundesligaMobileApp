@@ -34,15 +34,13 @@
 </template>
 
 <script>
-    import GoBackHome from '@/components/GoBackHome.vue'
+    
     import StadiumMap from '@/components/StadiumMap.vue'
     import MoreInfoUpcomingMatchesComp from '@/components/MoreInfoUpcomingMatchesComp.vue'
-
 
     export default {
         name: 'moreInfoUpcomingMatches',
         components: {
-            GoBackHome,
             StadiumMap,
             MoreInfoUpcomingMatchesComp
         }

@@ -40,7 +40,7 @@
 </template>
 
 <script>
-    import GoBackHome from '@/components/GoBackHome.vue'
+    
     import ModalVideo from '@/components/ModalVideo.vue'
     import MoreInfoFinishedMatchesComp from '@/components/MoreInfoFinishedMatchesComp.vue'
     import GoalList from '@/components/GoalList.vue'
@@ -48,7 +48,6 @@
     export default {
         name: 'moreInfoFinishedMatches',
         components: {
-            GoBackHome,
             ModalVideo,
             MoreInfoFinishedMatchesComp,
             GoalList

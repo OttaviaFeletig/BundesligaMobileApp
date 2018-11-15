@@ -67,7 +67,8 @@
           this.arrowBackTeams = false
         }
       }
-    }
+    },
+    
   }
 </script>
 
