@@ -40,6 +40,11 @@ export default new Router({
     path: '/teamDetails',
     name: 'teamDetails',
     component: () => import(/* webpackChunkName: "teamDetails" */ './views/TeamDetails.vue')
+  },
+  {
+    path: '/finishedMatches',
+    name: 'finishedMatches',
+    component: () => import(/* webpackChunkName: "finishedMatches" */ './components/FinishedMatches.vue')
   }
   ]
 })
