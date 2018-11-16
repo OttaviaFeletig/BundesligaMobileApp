@@ -6,9 +6,41 @@
       <div v-else>
    
     <v-container class='white--text'>
-        <Filters />
-        <UpcomingMatches :upcomingMatchesData='scheduledMatches'/>
-        <FinishedMatches :finishedMatchesData='finishedMatches' />
+      <v-container>
+      <v-layout row>
+      <v-flex xs12 sm12 d-flex>
+        <v-select
+          :items="items"
+          outline
+          label="Choose your team"
+          prepend-icon="search"
+          dark
+        ></v-select>
+      </v-flex>
+    </v-layout>
+    <h5 class="white--text mt-4">Matches</h5>
+    <v-layout row mt-0 mb-4>
+          <v-flex xs12 sm12 md6 d-inline-flex>
+            
+            <v-checkbox
+              label="Coming up"
+              value="SCHEDULED"
+              hide-details
+              dark
+              v-model="checkedSchedule"
+            ></v-checkbox>
+            <v-checkbox 
+              label="Finished"
+              value="FINISHED"
+              hide-details
+              dark
+              v-model="checkedSchedule"
+            ></v-checkbox>
+            <p>{{checkedSchedule}}</p>
+          </v-flex>
+        </v-layout>
+        </v-container>
+        <AllMatches :allMatchesData='matchesData' />
     </v-container>
       
       </div>
@@ -18,22 +50,22 @@
 </template>
 
 <script>
-import Filters from '@/components/Filters.vue'
-import UpcomingMatches from '@/components/UpcomingMatches.vue'
-import FinishedMatches from '@/components/FinishedMatches.vue'
+/* import Filters from '@/components/Filters.vue' */
+import AllMatches from '@/components/AllMatches.vue'
+
 
 export default {
   name: 'home',
   components: {
-      Filters,
-      UpcomingMatches,
-      FinishedMatches    
+      /* Filters, */
+      AllMatches,   
   },
   data () {
     return {
        isLoading: true,
-        finishedMatches: [],
-        scheduledMatches: []
+        matchesData: [],
+        items: ['a', 'b'],
+        checkedSchedule: []
     }
   },
   created () {
@@ -51,14 +83,20 @@ export default {
           return response.json();
         })
         .then(data => {
-          this.finishedMatches = data.matches.filter(oneMatch => oneMatch.status.includes('FINISHED'))
-          this.scheduledMatches = data.matches.filter(oneMatch => oneMatch.status.includes('SCHEDULED'))
-         
-          console.log(this.finishedMatches)
-          console.log(this.scheduledMatches)
+          this.matchesData = data.matches
+          console.log(this.matchesData)
           this.isLoading = false
         })
         .catch(error => alert(error));
+      }
+    },
+    computed: {
+      filter () {
+        if(!this.checkedSchedule.length){
+          return matchesData
+        } else {
+          return matchesData.filter(x => this.checkedSchedule.icludes(x.status))
+        }
       }
     }
   }
@@ -67,5 +105,7 @@ export default {
 </script>
 
 <style>
-
+.select_team{
+  color: white;
+}
 </style>

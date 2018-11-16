@@ -49,7 +49,6 @@
             
             <v-checkbox
               label="Coming up"
-              
               value="SCHEDULED"
               hide-details
               dark
@@ -57,12 +56,12 @@
             ></v-checkbox>
             <v-checkbox 
               label="Finished"
-            
               value="FINISHED"
               hide-details
               dark
               v-model="checkedSchedule"
             ></v-checkbox>
+            <p>{{checkedSchedule}}</p>
           </v-flex>
         </v-layout>
   </v-container>
@@ -73,20 +72,13 @@
     data () {
       return {
         items: ['a', 'b'],
-        checkedSchedule: true
+        checkedSchedule: []
       }
     },
     computed: {
       filter () {
-        if(this.checkedSchedule.length = 0){
-          this.checkedSchedule = true
-        } else{
-          this.checkedSchedule = false
-          console.log(this.checkedSchedule)
-        }
-      }
         
-      
+      }
     }
   }
 </script>
