@@ -49,17 +49,19 @@
             
             <v-checkbox
               label="Coming up"
-              color="white"
-              value="coming_up"
+              
+              value="SCHEDULED"
               hide-details
               dark
+              v-model="checkedSchedule"
             ></v-checkbox>
             <v-checkbox 
               label="Finished"
-              color="white"
-              value="finished"
+            
+              value="FINISHED"
               hide-details
               dark
+              v-model="checkedSchedule"
             ></v-checkbox>
           </v-flex>
         </v-layout>
@@ -68,10 +70,25 @@
 
 <script>
   export default {
-    data: () => ({
-      items: ['Choose...', 'Bar', 'Fizz', 'Buzz']
-    })
-  };
+    data () {
+      return {
+        items: ['a', 'b'],
+        checkedSchedule: true
+      }
+    },
+    computed: {
+      filter () {
+        if(this.checkedSchedule.length = 0){
+          this.checkedSchedule = true
+        } else{
+          this.checkedSchedule = false
+          console.log(this.checkedSchedule)
+        }
+      }
+        
+      
+    }
+  }
 </script>
 
 <style>

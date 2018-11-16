@@ -2,15 +2,13 @@
   
 
     <v-app>
-      <div v-if="isLoading">
-        <p>Loading</p>
-      </div>
-      <div v-else>
+      
 
         <Logo />
         <GoBackHome v-if="arrowBackHome == true" />
         <GoBackTeams v-if="arrowBackTeams == true" />
-        <router-link :to="{ name: 'finishedMatches', params: { dataToPass: this.finishedMatches } }"></router-link>
+     
+       <!--  <router-link :to="{ name: 'finishedMatches', params: { dataToPass: this.finishedMatches } }"></router-link> -->
       <v-card>
         <v-bottom-nav :active.sync="bottomNav" :value="true" color="rgba(255, 255, 255, 0.596)" fixed height="60px">
 
@@ -42,7 +40,7 @@
 
       
         
-      </div>
+    
          
     </v-app>
 
@@ -53,6 +51,7 @@
   import Logo from '@/components/Logo.vue'
   import GoBackHome from '@/components/GoBackHome.vue'
   import GoBackTeams from '@/components/GoBackTeams.vue'
+  /* import Home from '@/views/Home.vue' */
   export default {
     name: 'app',
     data() {
@@ -60,15 +59,13 @@
         bottomNav: 'home',
         arrowBackHome: false,
         arrowBackTeams: false,
-        isLoading: true,
-        finishedMatches: [],
-        scheduledMatches: []
       }
     },
     components: {
       Logo,
       GoBackHome,
-      GoBackTeams
+      GoBackTeams,
+      /* Home */
     },
     watch: {
       $route: function() {
@@ -82,32 +79,8 @@
           this.arrowBackTeams = false
         }
       }
-    },
-    created () {
-      this.getMatchesSchedule()
-    },
-    methods: {
-      getMatchesSchedule: function () {
-        fetch("//api.jsonbin.io/b/5bed97b85e84ba3878cfbf7a", {
-          method: "GET",
-          headers: {
-            'secret-key' : '$2a$10$7XtnPxrQe2VpOgZjL.2Ew.zn1sYLErHVMh7oigJbaONIcdNUgd8DW'
-          }
-        })
-        .then(response => {
-          return response.json();
-        })
-        .then(data => {
-          this.finishedMatches = data.matches.filter(oneMatch => oneMatch.status.includes('FINISHED'))
-          this.scheduledMatches = data.matches.filter(oneMatch => oneMatch.status.includes('SCHEDULED'))
-         
-          console.log(this.finishedMatches)
-          console.log(this.scheduledMatches)
-          this.isLoading = false
-        })
-        .catch(error => alert(error));
-      }
     }
+    
   }
 </script>
 

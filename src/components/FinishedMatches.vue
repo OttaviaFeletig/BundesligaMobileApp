@@ -42,66 +42,23 @@
 </div> -->
 
     <div>
-        <v-layout row mb-5 align-center>
-            <v-flex xs4 sm4 md4>
-                <img class="teams_logo" src="../../../berlin.png" alt="team logo">
-                <h4 class="text-center">TEAM 1</h4>
-            </v-flex>
-            <v-flex xs4 sm4 md4>
-                <h3 class="text-center">RESULT</h3>
-                <p class="mt-4 text-center">
-                    <router-link class="no_decoration" to="/moreInfoFinishedMatches">More info here</router-link>
-                </p>
-            </v-flex>
-            <v-flex xs4 sm4 md4>
-                <img class="teams_logo" src="../../../bayern.png" alt="team logo">
-                <h4 class="text-center">TEAM 2</h4>
-            </v-flex>
-        </v-layout>
-
-        <v-layout row mb-5 align-center>
-            <v-flex xs4 sm4 md4>
-                <img class="teams_logo" src="../../../berlin.png" alt="team logo">
-                <h4 class="text-center">TEAM 1</h4>
-            </v-flex>
-            <v-flex xs4 sm4 md4>
-                <h3 class="text-center">RESULT</h3>
-                <p class="mt-4 text-center ">
-                    <router-link class="no_decoration" to="/moreInfoFinishedMatches">More info here</router-link>
-                </p>
-            </v-flex>
-            <v-flex xs4 sm4 md4>
-                <img class="teams_logo" src="../../../bayern.png" alt="team logo">
-                <h4 class="text-center">TEAM 2</h4>
-            </v-flex>
-        </v-layout>
+        <OneMatchFinished v-for="(match, index) in finishedMatchesData" :finishedOneMatchData='match' :key="index" />
     </div>
 
 </template>
 
 <script>
+import OneMatchFinished from '@/components/OneMatchFinished.vue'
+
     export default {
         name: 'finishedMatches',
-        data() {
-            return {
-                finishedMatchesData: null
-            }
-        },
-        created() {
-            this.finishedMatchesData = this.$route.params.dataToPass
-            console.log('finished matches ' + this.finishedMatchesData)
+        props: ['finishedMatchesData'],
+        components: {
+            OneMatchFinished
         }
     }
 </script>
 
 <style scoped>
-    .teams_logo {
-        width: 100%;
-        margin-bottom: 20px;
-    }
 
-    .no_decoration {
-        text-decoration: none;
-        color: white;
-    }
 </style>
