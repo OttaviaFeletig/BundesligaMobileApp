@@ -23,7 +23,7 @@ import OneTeam from '@/components/OneTeam.vue'
 import OneTeamDetail from '@/components/OneTeamDetail.vue'
 import SearchBar from '@/components/SearchBar.vue'
 import GoBackTeams from '@/components/GoBackTeams.vue'
-import PlayerTable from '@/components/PlayerTable.vue'
+/* import PlayerTable from '@/components/PlayerTable.vue' */
 export default {
     name: 'teamList',
     props: ['allTeamsData'],
@@ -32,7 +32,7 @@ export default {
         OneTeamDetail,
         SearchBar,
         GoBackTeams,
-        PlayerTable
+        /* PlayerTable */
     },
     data() {
             return {

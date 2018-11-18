@@ -9,13 +9,13 @@
             <v-flex v-if="oneMatchData.status == 'FINISHED'" xs4 sm4 md4>
                 <h5 class="text-center">{{oneMatchData.score.fullTime.homeTeam}} - {{oneMatchData.score.fullTime.awayTeam}}</h5>
                 <p class="mt-4 text-center">
-                    <router-link class="no_decoration" to="/moreInfoFinishedMatches">More info here</router-link>
+                    <!-- <router-link class="no_decoration" to="/moreInfoFinishedMatches">More info here</router-link> -->
                 </p>
             </v-flex>
             <v-flex v-else xs4 sm4 md4>
                 <h5 class="text-center">{{oneMatchData.utcDate}}</h5>
                 <p class="mt-4 text-center">
-                    <router-link class="no_decoration" to="/moreInfoUpcomingMatches">More info here</router-link>
+                    <!-- <router-link class="no_decoration" to="/moreInfoUpcomingMatches">More info here</router-link> -->
                 </p>
             </v-flex>
             <v-flex xs4 sm4 md4>

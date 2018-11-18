@@ -8,7 +8,7 @@
       <div v-else>
 
         <Logo />
-        <GoBackHome v-if="arrowBackHome == true" />
+      <!--   <GoBackHome v-if="arrowBackHome == true" /> -->
        <!--  <router-link :to="{ name: 'teams', params: { dataToPass: this.allTeams } }">
              <GoBackTeams v-if="arrowBackTeams == true" />
         </router-link> -->

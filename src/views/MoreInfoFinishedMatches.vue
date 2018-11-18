@@ -42,7 +42,6 @@
 <script>
     
     import ModalVideo from '@/components/ModalVideo.vue'
-    import MoreInfoFinishedMatchesComp from '@/components/MoreInfoFinishedMatchesComp.vue'
     import GoalList from '@/components/GoalList.vue'
 
     export default {
