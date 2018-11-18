@@ -4,8 +4,9 @@
     <v-container class='white--text'>
         <v-layout row justify-center>
                 <v-flex xs8 mb-2>
-                    <h4 class="text-center">{{oneTeamDetailData.name}}</h4>
+                     <h4 class="text-center">{{oneTeamDetailData.name}}</h4>
                     <img class="teams_logo" :src=oneTeamDetailData.crestUrl alt="team logo">
+         
                     
                 </v-flex>
               

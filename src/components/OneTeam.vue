@@ -19,9 +19,11 @@
 </template>
 
 <script>
+
     export default {
         name: 'oneTeam',
         props: ['oneTeamData'],
+      
         
     }
 </script>

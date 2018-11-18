@@ -1,16 +1,16 @@
 <template>
-<v-container>
+<v-container class='white--text'>
     
     
-    
+        
     <div v-if="changeComponent">
         <SearchBar />
-         <button v-on:click="clickAndChange"><OneTeam v-for="(team, index) in allTeamsData" :oneTeamData='team' :key="index" /></button>
+        <div v-for="(team, index) in allTeamsData" :key="index"><div @click="clickAndChange(team)"><OneTeam :oneTeamData='team' /></div></div>
         
     </div>
    <div v-else>
-       <OneTeamDetail v-for="(team, index) in allTeamsData" :oneTeamDetailData='team' :key="index"></OneTeamDetail>
-         <button v-on:click="goBack"><GoBackTeams /></button>
+           <OneTeamDetail :oneTeamDetailData="selectedTeam" />
+       <button v-on:click="goBack()"><GoBackTeams /></button>
    </div>
     
         
@@ -23,7 +23,7 @@ import OneTeam from '@/components/OneTeam.vue'
 import OneTeamDetail from '@/components/OneTeamDetail.vue'
 import SearchBar from '@/components/SearchBar.vue'
 import GoBackTeams from '@/components/GoBackTeams.vue'
-
+import PlayerTable from '@/components/PlayerTable.vue'
 export default {
     name: 'teamList',
     props: ['allTeamsData'],
@@ -31,19 +31,23 @@ export default {
         OneTeam,
         OneTeamDetail,
         SearchBar,
-        GoBackTeams
+        GoBackTeams,
+        PlayerTable
     },
     data() {
             return {
-                changeComponent: true
+                changeComponent: true,
+                selectedTeam: []
             }
         },
-        created () {
+       /*  created () {
             clickAndChange()
             goBack()
-        },
+        }, */
         methods: {
-            clickAndChange: function () {
+            clickAndChange: function (selectedTeamDataIndex) {
+                console.log(selectedTeamDataIndex)
+                this.selectedTeam = selectedTeamDataIndex
                 this.changeComponent = false
             },
             goBack: function () {
