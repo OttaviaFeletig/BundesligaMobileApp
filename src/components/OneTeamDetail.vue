@@ -1,19 +1,31 @@
 <template>
+<div class="one_team_detail_body">
+    <!-- <GoBackTeams :allTeamsData='oneTeamDetailData'/> -->
     <v-container class='white--text'>
         <v-layout row justify-center>
                 <v-flex xs8 mb-2>
-                    <h4 class="text-center">TEAM 1</h4>
-                    <img class="teams_logo" src="../../../berlin.png" alt="team logo">
+                    <h4 class="text-center">{{oneTeamDetailData.name}}</h4>
+                    <img class="teams_logo" :src=oneTeamDetailData.crestUrl alt="team logo">
                     
                 </v-flex>
               
             </v-layout> 
+            <PlayerTable />
     </v-container>
+</div>
 </template>
 
 <script>
+import PlayerTable from '@/components/PlayerTable.vue'
+
+
 export default {
-    name: 'oneTeamDetail'
+    name: 'oneTeamDetail',
+    props: ['oneTeamDetailData'],
+    components: {
+        PlayerTable,
+       /*  GoBackTeams */
+    }
 }
 </script>
 
@@ -21,5 +33,9 @@ export default {
 .teams_logo {
         width: 100%;
         margin-top: 20px;
+    }
+    .one_team_detail_body {
+        padding-bottom: 20px;
+    padding-top: 100px;
     }
 </style>

@@ -2,11 +2,16 @@
   
 
     <v-app>
-      
+      <div v-if="isLoading">
+        <p>Loading</p>
+      </div>
+      <div v-else>
 
         <Logo />
         <GoBackHome v-if="arrowBackHome == true" />
-        <GoBackTeams v-if="arrowBackTeams == true" />
+       <!--  <router-link :to="{ name: 'teams', params: { dataToPass: this.allTeams } }">
+             <GoBackTeams v-if="arrowBackTeams == true" />
+        </router-link> -->
      
        <!--  <router-link :to="{ name: 'finishedMatches', params: { dataToPass: this.finishedMatches } }"></router-link> -->
       <v-card>
@@ -19,8 +24,7 @@
               <v-icon large>home</v-icon>
             </v-btn>
           </router-link>
-
-          <router-link to="/teams">
+           <router-link :to="{ name: 'teams', params: { dataToPass: this.allTeams } }">
             <v-btn color="rgb(115, 15, 15)" flat value="teams">
               <span>Teams</span>
               <v-icon large>fas fa-ellipsis-v</v-icon>
@@ -39,7 +43,7 @@
       <router-view class="body"></router-view>
 
       
-        
+      </div>
     
          
     </v-app>
@@ -59,6 +63,8 @@
         bottomNav: 'home',
         arrowBackHome: false,
         arrowBackTeams: false,
+        isLoading: true,
+        allTeams: []
       }
     },
     components: {
@@ -72,12 +78,34 @@
         if(this.$route.path === "/moreInfoFinishedMatches" || this.$route.path === "/moreInfoUpcomingMatches") {
           this.arrowBackHome = true
           console.log(this.arrowBackHome)
-        } else if(this.$route.path === "/teamDetails") {
+        } else if(this.$route.path === "/oneTeamDetail") {
           this.arrowBackTeams = true
           } else {
           this.arrowBackHome = false
           this.arrowBackTeams = false
         }
+      }
+    },
+      created () {
+      this.getTeamList()
+    },
+    methods: {
+      getTeamList: function () {
+        fetch("//api.jsonbin.io/b/5bf04b2ad4d48e387e5c2e5c", {
+          method: "GET",
+          headers: {
+            'secret-key' : '$2a$10$7XtnPxrQe2VpOgZjL.2Ew.zn1sYLErHVMh7oigJbaONIcdNUgd8DW'
+          }
+        })
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this.allTeams = data.teams
+          console.log(this.allTeams)
+          this.isLoading = false
+        })
+        .catch(error => alert(error));
       }
     }
     

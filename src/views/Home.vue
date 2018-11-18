@@ -36,11 +36,10 @@
               dark
               v-model="checkedSchedule"
             ></v-checkbox>
-            <p>{{checkedSchedule}}</p>
           </v-flex>
         </v-layout>
         </v-container>
-        <AllMatches :allMatchesData='matchesData' />
+        <AllMatches :allMatchesData='filter' />
     </v-container>
       
       </div>
@@ -93,9 +92,10 @@ export default {
     computed: {
       filter () {
         if(!this.checkedSchedule.length){
-          return matchesData
+          console.log('ciao')
+          return this.matchesData
         } else {
-          return matchesData.filter(x => this.checkedSchedule.icludes(x.status))
+          return this.matchesData.filter(x => this.checkedSchedule.includes(x.status))
         }
       }
     }

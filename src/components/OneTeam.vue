@@ -1,19 +1,14 @@
 <template>
     <v-container>
 
-
-        <router-link to="/teamDetails" class="no_decoration">
+        <!-- <router-link to='/oneTeamDetail' class="no_decoration"> -->
             <v-layout row justify-center>
                 <v-flex xs8 mb-5>
-                    <img class="teams_logo" src="../../../berlin.png" alt="team logo">
-                    <h4 class="text-center">TEAM 1</h4>
-                </v-flex>
-                <v-flex xs8 mb-5>
-                    <img class="teams_logo" src="../../../bayern.png" alt="team logo">
-                    <h4 class="text-center">TEAM 2</h4>
+                    <img class="teams_logo" :src=oneTeamData.crestUrl alt="team logo">
+                    <h4 class="text-center">{{oneTeamData.name}}</h4>
                 </v-flex>
             </v-layout>
-        </router-link>
+        <!-- </router-link> -->
 
 
 
@@ -25,7 +20,9 @@
 
 <script>
     export default {
-        name: 'oneTeam'
+        name: 'oneTeam',
+        props: ['oneTeamData'],
+        
     }
 </script>
 

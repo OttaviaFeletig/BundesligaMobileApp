@@ -1,7 +1,7 @@
 <template>
   <div class="teams">
     
-      <TeamList />
+      <TeamList :allTeamsData='allTeamInTeam' />
     
     
   </div>
@@ -16,6 +16,15 @@ export default {
   name: 'teams',
   components: {
     TeamList
-  }
+  },
+   data () {
+     return {
+       allTeamInTeam: null
+     }
+   },
+   created () {
+     this.allTeamInTeam = this.$route.params.dataToPass
+     console.log(this.allTeamInTeam)
+   },
 }
 </script>

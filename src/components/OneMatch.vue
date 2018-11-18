@@ -1,4 +1,5 @@
 <template>
+<div>
       <v-container>
         <v-layout row mb-5 align-center>
             <v-flex xs4 sm4 md4>
@@ -23,6 +24,7 @@
             </v-flex>
         </v-layout>
         </v-container>
+        </div>
 </template>
 
 <script>

@@ -37,9 +37,9 @@ export default new Router({
     component: () => import(/* webpackChunkName: "moreInfoFinishedMatches" */ './views/MoreInfoFinishedMatches.vue')
   },
   {
-    path: '/teamDetails',
-    name: 'teamDetails',
-    component: () => import(/* webpackChunkName: "teamDetails" */ './views/TeamDetails.vue')
+    path: '/oneTeamDetail',
+    name: 'oneTeamDetail',
+    component: () => import(/* webpackChunkName: "oneTeamDetail" */ './components/OneTeamDetail.vue')
   },
   ]
 })
