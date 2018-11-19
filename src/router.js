@@ -25,21 +25,6 @@ export default new Router({
     path: '/chat',
     name: 'chat',
     component: () => import(/* webpackChunkName: "chat" */ './views/Chat.vue')
-  },
-  {
-    path: '/moreInfoUpcomingMatches',
-    name: 'moreInfoUpcomingMatches',
-    component: () => import(/* webpackChunkName: "moreInfoUpcomingMatches" */ './views/MoreInfoUpcomingMatches.vue')
-  },
-  {
-    path: '/moreInfoFinishedMatches',
-    name: 'moreInfoFinishedMatches',
-    component: () => import(/* webpackChunkName: "moreInfoFinishedMatches" */ './views/MoreInfoFinishedMatches.vue')
-  },
-  {
-    path: '/oneTeamDetail',
-    name: 'oneTeamDetail',
-    component: () => import(/* webpackChunkName: "oneTeamDetail" */ './components/OneTeamDetail.vue')
-  },
+  }
   ]
 })

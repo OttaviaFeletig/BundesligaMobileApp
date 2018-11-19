@@ -42,8 +42,8 @@ export default {
     },
     methods: {
         getLogo: function () {
-            console.log(this.oneMatchData)
-            console.log(this.allLogo)
+            /* console.log(this.oneMatchData)
+            console.log(this.allLogo) */
             this.allLogo.forEach(element => {
                 if(element.id == this.oneMatchData.homeTeam.id){
                     this.homeTeamLogo = element.logo

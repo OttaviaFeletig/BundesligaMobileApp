@@ -1,22 +1,8 @@
 <template>
 <v-container class='white--text'>
-    
-    
         
     <div v-if="changeComponent">
        <v-container>
-      <v-layout row>
-      <v-flex xs12 sm12 d-flex>
-        <v-select
-          :items="items"
-          outline
-          label="Choose your team"
-          prepend-icon="search"
-          dark
-        ></v-select>
-      </v-flex>
-    </v-layout>
-    <h5 class="white--text mt-4">Matches</h5>
     <v-layout row mt-0 mb-4>
           <v-flex xs12 sm12 md6 d-inline-flex>
             
@@ -30,6 +16,13 @@
             <v-checkbox 
               label="Finished"
               value="FINISHED"
+              hide-details
+              dark
+              v-model="checkedSchedule"
+            ></v-checkbox>
+            <v-checkbox 
+              label="Current"
+              value="TODAY"
               hide-details
               dark
               v-model="checkedSchedule"
@@ -67,44 +60,45 @@ export default {
         MoreInfoMatches
     },
     data() {
-        /* var allMatchesDataInData = this.allMatchesData
-        var allLogoAndStadiumDataInData = this.logoAndStadiumData */
-            return {
-                changeComponent: true,
-                selectedMatch: [],
-             /*    allMatchesDataInData,
-                allLogoAndStadiumDataInData, */
-                checkedSchedule: [],
-                items: ['a', 'b'],
-                /* mergedData: filter() */
-            }
-        },
-       /*  created () {
-            clickAndChange()
-            goBack()
-        }, */
-        methods: {
-            clickAndChange: function (match) {
-                /* console.log(this.logoAndStadiumData) */
-                this.selectedMatch = match
-                this.changeComponent = false
-            },
-            goBack: function () {
-                this.changeComponent = true
-            },
-            getLogo: function () {
-
-            }
-        },
-           computed: {
-      filter () {
-        if(!this.checkedSchedule.length){
-          console.log('ciao')
-          return this.allMatchesData
-        } else {
-          return this.allMatchesData.filter(x => this.checkedSchedule.includes(x.status))
+        return {
+            changeComponent: true,
+            selectedMatch: [],
+            checkedSchedule: []            
         }
-      }
+    },
+     created () {
+        this.getTeamList()
+    },
+    methods: {
+        clickAndChange: function (match) {
+            /* console.log(this.logoAndStadiumData) */
+            this.selectedMatch = match
+            this.changeComponent = false
+        },
+        goBack: function () {
+            this.changeComponent = true
+        },
+        getTeamList: function () {
+            this.allMatchesData.forEach(element => {
+                if(!this.teamList.includes(element.homeTeam.name))
+                this.teamList.push(element.homeTeam.name) 
+            });
+            console.log(this.teamList)
+        }
+    },
+    computed: {
+        filter () {
+            if(!this.checkedSchedule.length){
+            console.log('ciao')
+            return this.allMatchesData
+            } else if (this.checkedSchedule == "TODAY"){
+                return this.allMatchesData.filter(x => x.matchday == x.season.currentMatchday)
+            } 
+            
+            else {
+            return this.allMatchesData.filter(x => this.checkedSchedule.includes(x.status))
+            }
+        }
     }
 }
 </script>
