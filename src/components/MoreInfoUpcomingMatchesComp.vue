@@ -21,14 +21,14 @@
 </template>
 
 <script>
-export default {
+/* export default {
     name: 'moreInfoUpcomingMatchesComp'
-}
+} */
 </script>
 
 <style scoped>
-.teams_logo{
+/* .teams_logo{
     width: 100%;
     margin-bottom: 20px;
-} 
+}  */
 </style>

@@ -73,7 +73,7 @@
       GoBackTeams,
       /* Home */
     },
-    watch: {
+/*     watch: {
       $route: function() {
         if(this.$route.path === "/moreInfoFinishedMatches" || this.$route.path === "/moreInfoUpcomingMatches") {
           this.arrowBackHome = true
@@ -85,13 +85,13 @@
           this.arrowBackTeams = false
         }
       }
-    },
+    }, */
       created () {
       this.getTeamList()
     },
     methods: {
       getTeamList: function () {
-        fetch("//api.jsonbin.io/b/5bf04b2ad4d48e387e5c2e5c", {
+        fetch("//api.jsonbin.io/b/5bf04b2ad4d48e387e5c2e5c/4", {
           method: "GET",
           headers: {
             'secret-key' : '$2a$10$7XtnPxrQe2VpOgZjL.2Ew.zn1sYLErHVMh7oigJbaONIcdNUgd8DW'

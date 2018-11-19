@@ -6,7 +6,7 @@
       <div v-else>
    
     <v-container class='white--text'>
-      <v-container>
+      <!-- <v-container>
       <v-layout row>
       <v-flex xs12 sm12 d-flex>
         <v-select
@@ -38,8 +38,8 @@
             ></v-checkbox>
           </v-flex>
         </v-layout>
-        </v-container>
-        <AllMatches :allMatchesData='filter' />
+        </v-container> -->
+        <AllMatches :allMatchesData='matchesData' :logoAndStadiumData='moreInfoData' />
     </v-container>
       
       </div>
@@ -63,16 +63,20 @@ export default {
     return {
        isLoading: true,
         matchesData: [],
-        items: ['a', 'b'],
-        checkedSchedule: []
+        moreInfoData: [],
+        scheduleData: "//api.jsonbin.io/b/5bed97b85e84ba3878cfbf7a",
+        stadiumAndLogoData: "//api.jsonbin.io/b/5bf28c46d5de952fc52ac668/1"
+        /* items: ['a', 'b'], */
+        /* checkedSchedule: [] */
     }
   },
   created () {
-      this.getMatchesSchedule()
+      this.getMatchesSchedule(),
+      this.getLogoAndMap()
     },
     methods: {
       getMatchesSchedule: function () {
-        fetch("//api.jsonbin.io/b/5bed97b85e84ba3878cfbf7a", {
+        fetch(this.scheduleData, {
           method: "GET",
           headers: {
             'secret-key' : '$2a$10$7XtnPxrQe2VpOgZjL.2Ew.zn1sYLErHVMh7oigJbaONIcdNUgd8DW'
@@ -87,9 +91,26 @@ export default {
           this.isLoading = false
         })
         .catch(error => alert(error));
+      },
+      getLogoAndMap: function () {
+        fetch(this.stadiumAndLogoData, {
+          method: "GET",
+          headers: {
+            'secret-key' : '$2a$10$7XtnPxrQe2VpOgZjL.2Ew.zn1sYLErHVMh7oigJbaONIcdNUgd8DW'
+          }
+        })
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this.moreInfoData = data.logoAndStadium
+          /* console.log(this.moreInfoData) */
+          /* this.isLoading = false */
+        })
+        .catch(error => alert(error));
       }
     },
-    computed: {
+/*     computed: {
       filter () {
         if(!this.checkedSchedule.length){
           console.log('ciao')
@@ -98,7 +119,7 @@ export default {
           return this.matchesData.filter(x => this.checkedSchedule.includes(x.status))
         }
       }
-    }
+    } */
   }
 
 

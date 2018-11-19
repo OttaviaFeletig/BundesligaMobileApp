@@ -3,7 +3,7 @@
       <v-container>
         <v-layout row mb-5 align-center>
             <v-flex xs4 sm4 md4>
-                <img class="teams_logo" src="../../../berlin.png" alt="team logo">
+                <img class="teams_logo" :src="homeTeamLogo" alt="team logo">
                 <h5 class="text-center">{{oneMatchData.homeTeam.name}}</h5>
             </v-flex>
             <v-flex v-if="oneMatchData.status == 'FINISHED'" xs4 sm4 md4>
@@ -19,7 +19,7 @@
                 </p>
             </v-flex>
             <v-flex xs4 sm4 md4>
-                <img class="teams_logo" src="../../../bayern.png" alt="team logo">
+                <img class="teams_logo" :src="awayTeamLogo" alt="team logo">
                 <h5 class="text-center">{{oneMatchData.awayTeam.name}}</h5>
             </v-flex>
         </v-layout>
@@ -30,7 +30,29 @@
 <script>
 export default {
     name: 'oneMatch',
-    props: ['oneMatchData']
+    props: ['oneMatchData', 'allLogo'],
+    data () { 
+         return {
+             homeTeamLogo: {},
+             awayTeamLogo: {}
+         }
+    },
+    created () {
+        this.getLogo()
+    },
+    methods: {
+        getLogo: function () {
+            console.log(this.oneMatchData)
+            console.log(this.allLogo)
+            this.allLogo.forEach(element => {
+                if(element.id == this.oneMatchData.homeTeam.id){
+                    this.homeTeamLogo = element.logo
+                } else if (element.id == this.oneMatchData.awayTeam.id){
+                    this.awayTeamLogo = element.logo
+                }
+            });            
+        }
+    }
 }
 </script>
 
