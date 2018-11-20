@@ -1,7 +1,7 @@
 <template>
 
 
-
+<div>
     <v-container class="white--text">
 
         <v-layout row mb-4 align-center>
@@ -84,7 +84,7 @@
 
     </v-container>
 
-
+</div>
 </template>
 
 <script>

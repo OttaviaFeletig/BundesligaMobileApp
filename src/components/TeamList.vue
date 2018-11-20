@@ -1,4 +1,5 @@
 <template>
+<div class="team_list_body">
 <v-container class='white--text'>
     
     
@@ -9,11 +10,11 @@
     <v-layout row>
         <v-flex xs12 sm12 d-flex>
             <v-text-field hide-details prepend-icon="search" single-line dark v-model="searchTeam"></v-text-field>
-            <p>{{searchTeam}}</p>
+           
         </v-flex>
     </v-layout>
 </v-container>
-        <div v-for="(team, index) in allTeamsData" :key="index"><div @click="clickAndChange(team)"><OneTeam :oneTeamData='team' /></div></div>
+        <div v-for="(team, index) in findTeam" :key="index"><div @click="clickAndChange(team)"><OneTeam :oneTeamData='team' /></div></div>
         
     </div>
    <div v-else>
@@ -23,7 +24,7 @@
     
         
 </v-container>
-    
+    </div>
 </template>
 
 <script>
@@ -46,7 +47,8 @@ export default {
             return {
                 changeComponent: true,
                 selectedTeam: [],
-                searchTeam: ''
+                searchTeam: '',
+                teamListData: []
             }
         },
        /*  created () {
@@ -63,19 +65,23 @@ export default {
                 this.changeComponent = true
             }
         },
-        /* computed: {
-            searchTeam () {
+        computed: {
+            findTeam () {
                    if(this.searchTeam == "") {
+                       console.log(this.allTeamsData)
            return this.allTeamsData
          } else {
            console.log(this.searchTeam)
-           return this.allTeamsData.filter(x => x.homeTeam.name.toUpperCase().includes(this.searchTeam.toUpperCase()))
+           return this.allTeamsData.filter(x => x.name.toUpperCase().includes(this.searchTeam.toUpperCase()))
          }
             }
-        } */
+        }
 }
 </script>
 
 <style>
-
+.team_list_body{
+    padding-top: 20px;
+    padding-bottom: 220px;
+}
 </style>

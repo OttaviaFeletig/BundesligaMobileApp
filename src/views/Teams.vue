@@ -24,7 +24,7 @@ export default {
    },
    created () {
      this.allTeamInTeam = this.$route.params.dataToPass
-     console.log(this.allTeamInTeam)
+    
    },
 }
 </script>

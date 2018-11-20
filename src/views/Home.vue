@@ -3,44 +3,12 @@
     <div v-if="isLoading">
         <p>Loading</p>
       </div>
-      <div v-else>
+      <div v-else class='white--text'>
    
-    <v-container class='white--text'>
-      <!-- <v-container>
-      <v-layout row>
-      <v-flex xs12 sm12 d-flex>
-        <v-select
-          :items="items"
-          outline
-          label="Choose your team"
-          prepend-icon="search"
-          dark
-        ></v-select>
-      </v-flex>
-    </v-layout>
-    <h5 class="white--text mt-4">Matches</h5>
-    <v-layout row mt-0 mb-4>
-          <v-flex xs12 sm12 md6 d-inline-flex>
-            
-            <v-checkbox
-              label="Coming up"
-              value="SCHEDULED"
-              hide-details
-              dark
-              v-model="checkedSchedule"
-            ></v-checkbox>
-            <v-checkbox 
-              label="Finished"
-              value="FINISHED"
-              hide-details
-              dark
-              v-model="checkedSchedule"
-            ></v-checkbox>
-          </v-flex>
-        </v-layout>
-        </v-container> -->
+    
+   
         <AllMatches :allMatchesData='matchesData' :logoAndStadiumData='moreInfoData' />
-    </v-container>
+   
       
       </div>
     
@@ -71,8 +39,9 @@ export default {
     }
   },
   created () {
-      this.getMatchesSchedule(),
-      this.getLogoAndMap()
+    /* this.getLogoAndMap() */
+      this.getMatchesSchedule()
+      
     },
     methods: {
       getMatchesSchedule: function () {
@@ -89,10 +58,12 @@ export default {
           this.matchesData = data.matches
           console.log(this.matchesData)
           this.isLoading = false
+          this.getLogoAndMap()
         })
         .catch(error => alert(error));
       },
       getLogoAndMap: function () {
+        console.log("hi")
         fetch(this.stadiumAndLogoData, {
           method: "GET",
           headers: {

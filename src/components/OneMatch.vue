@@ -42,14 +42,17 @@ export default {
     },
     methods: {
         getLogo: function () {
-            /* console.log(this.oneMatchData)
-            console.log(this.allLogo) */
+            /* console.log(this.oneMatchData) */
+            console.log('allLogos' + this.allLogo)
             this.allLogo.forEach(element => {
+                console.log("filterName: " + element.id)
                 if(element.id == this.oneMatchData.homeTeam.id){
+                    console.log("yes: " + element.id)
                     this.homeTeamLogo = element.logo
                 } else if (element.id == this.oneMatchData.awayTeam.id){
+                    console.log("No: " + element.id)
                     this.awayTeamLogo = element.logo
-                }
+                } 
             });            
         }
     }

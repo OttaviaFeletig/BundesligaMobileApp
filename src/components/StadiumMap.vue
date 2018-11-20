@@ -1,4 +1,5 @@
 <template>
+<div>
     <v-container>
         <v-layout>
             <h5 class="white--text mb-4">{{mapName}}</h5>
@@ -12,6 +13,7 @@
             </div>
         </v-layout>
     </v-container>
+</div>
 </template>
 
 <script>
