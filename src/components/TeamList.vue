@@ -80,8 +80,39 @@ export default {
 </script>
 
 <style>
-.team_list_body{
-    padding-top: 20px;
-    padding-bottom: 220px;
+
+  .team_list_body{
+    padding-bottom: 0px;
+    padding-top: 60px;
+  }
+ @media only screen and (max-height: 568px) {
+   .team_list_body{
+    padding-bottom: 170px;
+  }
+}
+@media only screen and (min-height: 667px) {
+     .team_list_body{
+    padding-bottom: 255px;
+  }
+}
+@media only screen and (min-height: 736px) {
+    .team_list_body{
+    padding-bottom: 307px;
+  }
+} 
+@media only screen and (min-height: 812px) {
+    .team_list_body{
+    padding-bottom: 395px;
+  }
+} 
+@media only screen and (min-height: 1024px) {
+    .team_list_body{
+    padding-bottom: 491px;
+  }
+} 
+@media only screen and (min-height: 1336px) {
+    .team_list_body{
+    padding-bottom: 703px;
+  }
 }
 </style>

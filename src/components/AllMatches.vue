@@ -46,7 +46,7 @@
         </v-container>
         <div v-for="(match, index) in filter" :key="index">
             <div @click="clickAndChange(match)">
-                <OneMatch :oneMatchData='match' :allLogo='logoAndStadiumData' />
+                <OneMatch :oneMatchData='match' :oneLogoHomeTeam='getLogoHomeTeam(match)' :oneLogoAwayTeam='getLogoAwayTeam(match)' />
             </div>
         </div>
         
@@ -75,57 +75,34 @@ export default {
         return {
             changeComponent: true,
             selectedMatch: [],
-            checkedSchedule: [],
-           /*  defaultSelected: ['All Teams'],
-            teamList: [] */
+            checkedSchedule: []
         }
     },
-     /* created () {
-        this.getTeamList()
-    }, */
     methods: {
-        clickAndChange: function (match) {
+        clickAndChange(match) {
             /* console.log(this.logoAndStadiumData) */
             this.selectedMatch = match
             this.changeComponent = false
         },
-        goBack: function () {
+        goBack() {
             this.changeComponent = true
         },
-        getLogo2: function () {
-            /* console.log(this.oneMatchData) */
-          /*   console.log('allLogos' + this.allLogo)
-            this.allLogo.forEach(element => {
-                console.log("filterName: " + element.id)
-                if(element.id == this.oneMatchData.homeTeam.id){
-                    console.log("yes: " + element.id)
-                    this.homeTeamLogo = element.logo
-                } else if (element.id == this.oneMatchData.awayTeam.id){
-                    console.log("No: " + element.id)
-                    this.awayTeamLogo = element.logo
-                } 
-            });  */  
-            console.log("hello")         
+        getLogoHomeTeam(match) {
+            const oneLogoHomeTeamData =  this.logoAndStadiumData.filter(el => el.id == match.homeTeam.id)
+            return oneLogoHomeTeamData[0].logo        
+        },
+        getLogoAwayTeam(match) {
+            const oneLogoAwayTeamData = this.logoAndStadiumData.filter(el => el.id == match.awayTeam.id)
+            return oneLogoAwayTeamData[0].logo 
         }
-        /* getTeamList: function () {
-            this.allMatchesData.forEach(element => {
-                if(!this.teamList.includes(element.homeTeam.name))
-                this.teamList.push(element.homeTeam.name) 
-            });
-            console.log(this.teamList)
-        } */
     },
     computed: {
         filter () {
             if(!this.checkedSchedule.length){
             return this.allMatchesData
             } else if (this.checkedSchedule == "TODAY"){
-                this.getLogo2()
                 return this.allMatchesData.filter(x => x.matchday == x.season.currentMatchday)
-            } 
-            
-            else {
-                this.getLogo2()
+            } else {
             return this.allMatchesData.filter(x => this.checkedSchedule.includes(x.status))
             }
         }

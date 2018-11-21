@@ -1,5 +1,5 @@
 <template>
-  <div class="teams">
+  <div class="teams_padding">
     
       <TeamList :allTeamsData='allTeamInTeam' />
     
@@ -28,3 +28,7 @@ export default {
    },
 }
 </script>
+
+<style>
+
+</style>

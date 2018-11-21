@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home_padding">
     <div v-if="isLoading">
         <p>Loading</p>
       </div>
@@ -34,14 +34,10 @@ export default {
         moreInfoData: [],
         scheduleData: "//api.jsonbin.io/b/5bed97b85e84ba3878cfbf7a",
         stadiumAndLogoData: "//api.jsonbin.io/b/5bf28c46d5de952fc52ac668/1"
-        /* items: ['a', 'b'], */
-        /* checkedSchedule: [] */
     }
   },
   created () {
-    /* this.getLogoAndMap() */
       this.getMatchesSchedule()
-      
     },
     methods: {
       getMatchesSchedule: function () {
@@ -56,9 +52,8 @@ export default {
         })
         .then(data => {
           this.matchesData = data.matches
-          console.log(this.matchesData)
-          this.isLoading = false
-          this.getLogoAndMap()
+          console.log(this.matchesData) 
+          this.getLogoAndMap()  
         })
         .catch(error => alert(error));
       },
@@ -75,22 +70,11 @@ export default {
         })
         .then(data => {
           this.moreInfoData = data.logoAndStadium
-          /* console.log(this.moreInfoData) */
-          /* this.isLoading = false */
+          this.isLoading = false
         })
         .catch(error => alert(error));
       }
     },
-/*     computed: {
-      filter () {
-        if(!this.checkedSchedule.length){
-          console.log('ciao')
-          return this.matchesData
-        } else {
-          return this.matchesData.filter(x => this.checkedSchedule.includes(x.status))
-        }
-      }
-    } */
   }
 
 
@@ -99,5 +83,39 @@ export default {
 <style>
 .select_team{
   color: white;
+}
+.home_padding{
+  padding-bottom: 0px;
+  padding-top: 60px;
+}
+ @media only screen and (max-height: 568px) {
+   .home_padding{
+    padding-bottom: 20px;
+  }
+}
+@media only screen and (min-height: 667px) {
+     .home_padding{
+    padding-bottom: 20px;
+  }
+}
+@media only screen and (min-height: 736px) {
+    .home_padding{
+    padding-bottom: 20px;
+  }
+} 
+@media only screen and (min-height: 812px) {
+    .home_padding{
+    padding-bottom: 20px;
+  }
+} 
+@media only screen and (min-height: 1024px) {
+    .home_padding{
+    padding-bottom: 20px;
+  }
+} 
+@media only screen and (min-height: 1336px) {
+    .home_padding{
+    padding-bottom: 20px;
+  }
 }
 </style>

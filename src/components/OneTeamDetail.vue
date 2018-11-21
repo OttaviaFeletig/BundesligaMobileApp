@@ -35,8 +35,37 @@ export default {
         width: 100%;
         margin-top: 20px;
     }
-    .one_team_detail_body {
-        padding-bottom: 20px;
-    padding-top: 100px;
-    }
+  .one_team_detail_body{
+    padding-bottom: 0px;
+  }
+ @media only screen and (max-height: 568px) {
+   .one_team_detail_body{
+    padding-bottom: 20px;
+  }
+}
+@media only screen and (min-height: 667px) {
+     .one_team_detail_body{
+    padding-bottom: 20px;
+  }
+}
+@media only screen and (min-height: 736px) {
+    .one_team_detail_body{
+    padding-bottom: 20px;
+  }
+} 
+@media only screen and (min-height: 812px) {
+    .one_team_detail_body{
+    padding-bottom: 20px;
+  }
+} 
+@media only screen and (min-height: 1024px) {
+    .one_team_detail_body{
+    padding-bottom: 20px;
+  }
+} 
+@media only screen and (min-height: 1336px) {
+    .one_team_detail_body{
+    padding-bottom: 20px;
+  }
+}
 </style>

@@ -11,7 +11,7 @@
 
         </v-layout>
 
-        <div v-if="oneMoreInfoMatchesData.status == 'FINISHED'">
+        <div class="more_info_finished_body" v-if="oneMoreInfoMatchesData.status == 'FINISHED'">
 
 
             <v-layout row mb-4 align-center>
@@ -58,7 +58,7 @@
             </v-layout>
         </div>
 
-        <div v-else>
+        <div v-else  class="more_info_scheduled_body">
             <v-layout row mb-4 align-center>
 
                 <v-flex xs4 sm4 md4>
@@ -160,5 +160,45 @@
 }
 .opacity {
     opacity: 0.65;
+}
+/* .more_info_matches_detail_body{
+    padding-bottom: 400px;
+    padding-top: 100px;
+} */
+.more_info_finished_body{
+    padding-bottom: 0px;
+  }
+  .more_info_scheduled_body{
+    padding-bottom: 0px;
+  }
+ @media only screen and (max-height: 568px) {
+   .more_info_finished_body{
+    padding-bottom: 20px;
+  }
+}
+@media only screen and (min-height: 667px) {
+     .more_info_finished_body{
+    padding-bottom: 20px;
+  }
+}
+@media only screen and (min-height: 736px) {
+    .more_info_finished_body{
+    padding-bottom: 20px;
+  }
+} 
+@media only screen and (min-height: 812px) {
+    .more_info_finished_body{
+    padding-bottom: 78px;
+  }
+} 
+@media only screen and (min-height: 1024px) {
+    .more_info_finished_body{
+    padding-bottom: 191px;
+  }
+} 
+@media only screen and (min-height: 1336px) {
+    .more_info_finished_body{
+    padding-bottom: 438px;
+  }
 }
 </style>

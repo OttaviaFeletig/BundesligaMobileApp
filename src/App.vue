@@ -15,7 +15,7 @@
      
        <!--  <router-link :to="{ name: 'finishedMatches', params: { dataToPass: this.finishedMatches } }"></router-link> -->
       <v-card>
-        <v-bottom-nav :active.sync="bottomNav" :value="true" color="rgba(255, 255, 255, 0.596)" fixed height="60px">
+        <v-bottom-nav :active.sync="bottomNav" :value="true" color="rgba(255, 255, 255, 0.596)" fixed height="60px" class="navigation_menu">
 
           <router-link to="/">
           
@@ -114,12 +114,16 @@
 
 <style>
   .body {
-    padding-bottom: 20px;
-    padding-top: 60px;
+    /* padding-top: 60px; */
     background-image: url('../../background.jpg');
     /*  background-repeat: no-repeat;  */
     background-attachment: fixed;
     background-size: cover;
     height: 100%;
+    width: 100vw;
   }
+ .navigation_menu{
+   z-index: 2;
+ }
+
 </style>
