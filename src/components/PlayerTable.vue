@@ -1,18 +1,26 @@
 <template>
     <v-container class='white--text' mb-5>
        
-    <v-data-table
+<!--     <v-data-table
     :headers="headers"
-    :items="players"
+    :items="onePlayer"
     hide-actions
     class="transparent"
   >
     <template slot="items" slot-scope="props">
-      <td class="">{{ props.item.name }}</td>
-      <td class="text-xs-center">{{ props.item.number }}</td>
+      <td class="">{{ props.item }}</td>
+      <td class="text-xs-center">{{ props.item.shirtNumber }}</td>
       <td class="text-xs-center">{{ props.item.position }}</td>
     </template>
-  </v-data-table>
+  </v-data-table> -->
+
+
+                      
+                     
+      <td>{{onePlayer.name}}</td>
+      <td>{{onePlayer.shirtNumber}}</td>
+      <td>{{onePlayer.position}}</td>
+                    
 
     </v-container>
 </template>
@@ -20,6 +28,7 @@
 <script>
 export default {
     name: 'playerTable',
+    props: ['onePlayer'],
      data () {
       return {
         headers: [
@@ -27,7 +36,8 @@ export default {
           { text: 'Number', value: 'number', width: "1%"},
           { text: 'Position', value: 'position', width: "1%"},
         ],
-        players: [
+        playersListArray: []
+        /* players: [
           {
             value: false,
             name: 'AAAAA',
@@ -88,9 +98,19 @@ export default {
             number: 19,
             position: 'goal keeper',
           }
-        ]
+        ] */
       }
-    }
+    },
+  /*   methods: {
+      getOnePlayerList(){
+        this.playersListArray = [...this.onePlayer]
+        console.log(this.onePlayer)
+        console.log(this.playersListArray)
+      }
+    },
+    mounted(){
+      this.getOnePlayerList()
+    } */
   }
 
 </script>

@@ -18,7 +18,7 @@
         
     </div>
    <div v-else>
-           <OneTeamDetail :oneTeamDetailData="selectedTeam" />
+           <OneTeamDetail :oneTeamDetailData="selectedTeam" :playerListData="playerList" />
        <button v-on:click="goBack()"><GoBackTeams /></button>
    </div>
     
@@ -48,7 +48,9 @@ export default {
                 changeComponent: true,
                 selectedTeam: [],
                 searchTeam: '',
-                teamListData: []
+                teamListData: [],
+                oneTeamUrl: 'http://api.football-data.org/v2/teams/',
+                playerList: []
             }
         },
        /*  created () {
@@ -57,10 +59,26 @@ export default {
         }, */
         methods: {
             clickAndChange: function (selectedTeamDataIndex) {
-                console.log(selectedTeamDataIndex)
-                this.selectedTeam = selectedTeamDataIndex
-                this.changeComponent = false
-            },
+                    
+                fetch(this.oneTeamUrl + selectedTeamDataIndex.id, {
+                    method: "GET",
+                    headers: {
+                        'X-Auth-Token' : 'e44f8c35307d4bbbb267779b5515ce9e'
+                    }
+                    })
+                    .then(response => {
+                    return response.json();
+                    })
+                    .then(data => {
+                        console.log(selectedTeamDataIndex)
+                        
+                        this.selectedTeam = selectedTeamDataIndex
+                        this.playerList = data.squad  
+                        console.log(this.playerList)   
+                        this.changeComponent = false
+                    })
+                    .catch(error => alert(error));                
+                        },
             goBack: function () {
                 this.changeComponent = true
             }

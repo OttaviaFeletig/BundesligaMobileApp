@@ -5,7 +5,7 @@
 
                 <v-layout>
                     <v-flex>
-                        <v-btn block outline dark v-on:click="handler()">Login with gmail</v-btn>
+                        <v-btn block outline dark v-on:click="login()">Login with gmail</v-btn>
                     </v-flex>
                 </v-layout>
 
@@ -18,12 +18,24 @@
                     </v-flex>
                 </v-layout>
                 
-                <div class="messages_container pre-scrollable scroll-y mt-4" id="scroll">
+                <!-- <div class="messages_container pre-scrollable scroll-y mt-4 d-flex flex-column align-items-end">
                     <div class="single_message" v-for="(msg, index) in messages" :key="index">
                         <span class="date_text">{{msg.name}}, {{msg.date}}</span>
                         <p class="message_text d-flex flex-shrink-2">{{msg.body}}</p>
                     </div>
+                </div> -->
+            <div class="messages_container pre-scrollable scroll-y mt-4">
+                <div class=" static" v-for="(msg, index) in messages" :key="index">
+                    <div v-bind:class="{position: defineWhoIsWriting(msg.name)}">
+                        <div class="single_message">
+                        <p class="m-0 name_text">{{msg.name}}</p>
+                        <p class="date_text">{{msg.date}}</p>
+                        <p class="message_text">{{msg.body}}</p>
+                        </div>
+                    </div>
                 </div>
+            </div>
+
                 <div class="fixed-bottom message_field mr-1">
                     <v-layout>
                         <v-btn v-on:click="writeNewPost()" outline fab color="white">
@@ -56,6 +68,8 @@
                 msg: "",
                 user: null,
                 messages: [],
+                postName: '',
+                activePosition: true,
             };
         },
         methods: {
@@ -75,6 +89,8 @@
                         console.log(user);
                         console.log(user.displayName);
                         console.log(user.email);
+                        this.getPosts()
+                        this.defineWhoIsWriting()
                     })
                     .catch(function (error) {
                         alert("error" + error.message);
@@ -113,8 +129,9 @@
                     .database()
                     .ref("mainChat")
                     .update(updates);
-                this.msg = null;         
-
+                this.msg = null;
+                /* this.defineWhoIsWriting()  */
+                
             },
             getPosts() {
                 firebase
@@ -123,8 +140,11 @@
                     .on("value", data => {
                         this.messages = data.val();
                     });
+                    
+                    this.loggedIn = true
+                     
             },
-            handler() {
+            /* handler() {
                 this.getPosts()
                 this.login()
                 this.scrollDown()
@@ -133,13 +153,46 @@
             scrollDown() {
                 var container = this.$el.querySelector("scroll");
                 console.log(container)
-                /* container.scrollTop = container.scrollHeight; */
+                container.scrollTop = container.scrollHeight;
+            } */
+            defineWhoIsWriting(myMessage) {
+                /* console.log(this.user.displayName)
+                console.log(this.messages)
+                for(var key in this.messages) {
+                    if(this.messages.hasOwnProperty(key)) {
+                        this.postName = this.messages[key].name
+                        console.log(this.postName)
+                        if(this.user.displayName == this.postName) {
+                        this.activePosition = true
+                    } else {
+                        this.activePosition = false
+                    }
+                    console.log(this.activePosition)
+                        }
+                }
+                console.log(this.activePosition) */
+                /* console.log(myMessage)
+                console.log(this.user.displayName) */
+                console.log( myMessage == this.user.displayName)
+                return myMessage == this.user.displayName
             }
         }
     }
 </script>
 
 <style scoped>
+.position{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+}
+.static{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
 .messages_container {
             background-color: rgba(255, 255, 255, 0.596);
             height: 0px;
@@ -223,7 +276,7 @@
     }
 
     .single_message {
-        width: 55%;
+        width: 50%;
         padding: 10px;
         margin: 20px;
         background-color: rgb(115, 15, 15);
@@ -235,6 +288,9 @@
     }
     .chat_body{
         padding-top: 100px;
+    }
+    .name_text{
+        color: white;
     }
     /* .chat{
         z-index: 1;

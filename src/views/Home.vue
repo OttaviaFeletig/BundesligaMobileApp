@@ -32,7 +32,7 @@ export default {
        isLoading: true,
         matchesData: [],
         moreInfoData: [],
-        scheduleData: "//api.jsonbin.io/b/5bed97b85e84ba3878cfbf7a",
+        scheduleData: "http://api.football-data.org/v2/competitions/2002/matches?",
         stadiumAndLogoData: "//api.jsonbin.io/b/5bf28c46d5de952fc52ac668/1"
     }
   },
@@ -44,7 +44,7 @@ export default {
         fetch(this.scheduleData, {
           method: "GET",
           headers: {
-            'secret-key' : '$2a$10$7XtnPxrQe2VpOgZjL.2Ew.zn1sYLErHVMh7oigJbaONIcdNUgd8DW'
+            'X-Auth-Token' : 'e44f8c35307d4bbbb267779b5515ce9e'
           }
         })
         .then(response => {
