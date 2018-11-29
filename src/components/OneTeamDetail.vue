@@ -18,18 +18,18 @@
                         <th class="number">Number</th>
                         <th class="position">Position</th>
                       </tr>
-                      <tr v-for="(onePlayer, index) in playerListData" :key="index">
+                      <tr v-for="(onePlayer, index) in onlyPlayers" :key="index">
                         <td>{{onePlayer.name}}</td>
                         
                             <td v-if="onePlayer.shirtNumber == null">-</td>
                         
                             <td v-else>{{onePlayer.shirtNumber}}</td>
                         
-                            <td v-if="onePlayer.role == 'COACH'">{{coachRoleChanged}}</td>
+                           <!--  <td v-if="onePlayer.role == 'COACH'">{{coachRoleChanged}}</td>
                         
-                            <td v-else-if="onePlayer.role == 'ASSISTANT_COACH'">{{assistantCoachRoleChanged}}</td>
+                            <td v-else-if="onePlayer.role == 'ASSISTANT_COACH'">{{assistantCoachRoleChanged}}</td> -->
                         
-                            <td v-else>{{onePlayer.position}}</td>
+                            <td>{{onePlayer.position}}</td>
                          
                       </tr>
                     </table>
@@ -54,16 +54,21 @@ export default {
     },
     data() {
       return {
-        nonPlayersListRole: [],
+        /* nonPlayersListRole: [],
         nonPlayersRoleChanges: [],
         coachRole: [],
         assistantCoachRole: [],
         coachRoleChanged: '',
-        assistantCoachRoleChanged: ''
+        assistantCoachRoleChanged: '', */
+        onlyPlayers: []
       }
     },
       methods: {
-      getplayersListRole(playerList){
+        getOnlyPlayers(playerList){
+          this.onlyPlayers = playerList.filter(role => role.role == 'PLAYER')
+          console.log(this.onlyPlayers)
+        },
+     /*  getplayersListRole(playerList){
         console.log(playerList)
         this.coachRole = (playerList.filter(role => role.role == "COACH"))
         this.assistantCoachRole = (playerList.filter(role => role.role == "ASSISTANT_COACH"))
@@ -75,10 +80,11 @@ export default {
         .join(' ');
         console.log(this.coachRoleChanged)
         console.log(this.assistantCoachRoleChanged)
-      }
+      } */
     },
     created(){
-      this.getplayersListRole(this.playerListData)
+      /* this.getplayersListRole(this.playerListData), */
+      this.getOnlyPlayers(this.playerListData)
     }
   
 }
