@@ -12,8 +12,8 @@
                 
                 </p>
             </v-flex>
-            <v-flex v-else xs4 sm4 md4>
-                <h5 class="text-center">{{oneMatchData.utcDate}}</h5>
+            <v-flex v-else xs4 sm4 md4 mb-5>
+                <h5 class="text-center">{{matchDay}}</h5>
                 <p class="mt-4 text-center">
                  
                 </p>
@@ -33,7 +33,16 @@ export default {
     props: ['oneMatchData', 'oneLogoHomeTeam', 'oneLogoAwayTeam'],
     data () { 
          return {
+             matchDay: ''
          }
+    },
+    created(){
+        this.formatDate(this.oneMatchData.utcDate);
+    },
+    methods:{
+        formatDate(date){
+            this.matchDay = date.split('T')[0]
+        }
     }
 }
 </script>

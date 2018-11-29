@@ -20,9 +20,17 @@
                       </tr>
                       <tr v-for="(onePlayer, index) in playerListData" :key="index">
                         <td>{{onePlayer.name}}</td>
-                        <td>{{onePlayer.shirtNumber}}</td>
-                        <td>{{onePlayer.position}}</td>
                         
+                            <td v-if="onePlayer.shirtNumber == null">-</td>
+                        
+                            <td v-else>{{onePlayer.shirtNumber}}</td>
+                        
+                            <td v-if="onePlayer.role == 'COACH'">{{coachRoleChanged}}</td>
+                        
+                            <td v-else-if="onePlayer.role == 'ASSISTANT_COACH'">{{assistantCoachRoleChanged}}</td>
+                        
+                            <td v-else>{{onePlayer.position}}</td>
+                         
                       </tr>
                     </table>
                     </v-layout>
@@ -42,25 +50,37 @@ export default {
     props: ['oneTeamDetailData', 'playerListData'],
     components: {
         PlayerTable,
-       /*  GoBackTeams */
+       
     },
-  /*   data() {
+    data() {
       return {
-        playersListArray: []
+        nonPlayersListRole: [],
+        nonPlayersRoleChanges: [],
+        coachRole: [],
+        assistantCoachRole: [],
+        coachRoleChanged: '',
+        assistantCoachRoleChanged: ''
       }
-    }, */
-     /*  methods: {
-      getOnePlayerListArray(){
-        var oneListPlayersName = this.playerListData.map(el => el.name)
-        this.playersListArray = [...oneListPlayersName]
-     
-      console.log(this.playerListData)
-        console.log(this.playersListArray)
+    },
+      methods: {
+      getplayersListRole(playerList){
+        console.log(playerList)
+        this.coachRole = (playerList.filter(role => role.role == "COACH"))
+        this.assistantCoachRole = (playerList.filter(role => role.role == "ASSISTANT_COACH"))
+
+        this.coachRoleChanged = this.coachRole[0].role.charAt(0).toUpperCase() + this.coachRole[0].role.substring(1).toLowerCase();
+        this.assistantCoachRoleChanged = this.assistantCoachRole[0].role.split('_').map(function (x){
+        return x.charAt(0).toUpperCase() + x.substring(1).toLowerCase();
+        })
+        .join(' ');
+        console.log(this.coachRoleChanged)
+        console.log(this.assistantCoachRoleChanged)
       }
     },
     created(){
-      this.getOnePlayerListArray()
-    } */
+      this.getplayersListRole(this.playerListData)
+    }
+  
 }
 </script>
 

@@ -67,9 +67,7 @@
                 loggedIn: false,
                 msg: "",
                 user: null,
-                messages: [],
-                postName: '',
-                activePosition: true,
+                messages: []
             };
         },
         methods: {
@@ -107,8 +105,7 @@
                     })
                     .catch(function (error) {
                         alert("alert logout");
-                    });
-                
+                    });  
             },
             writeNewPost() {
                 console.log(this.user.displayName);
@@ -129,9 +126,7 @@
                     .database()
                     .ref("mainChat")
                     .update(updates);
-                this.msg = null;
-                /* this.defineWhoIsWriting()  */
-                
+                this.msg = null;                
             },
             getPosts() {
                 firebase
@@ -144,35 +139,7 @@
                     this.loggedIn = true
                      
             },
-            /* handler() {
-                this.getPosts()
-                this.login()
-                this.scrollDown()
-                this.loggedIn = true
-            },
-            scrollDown() {
-                var container = this.$el.querySelector("scroll");
-                console.log(container)
-                container.scrollTop = container.scrollHeight;
-            } */
             defineWhoIsWriting(myMessage) {
-                /* console.log(this.user.displayName)
-                console.log(this.messages)
-                for(var key in this.messages) {
-                    if(this.messages.hasOwnProperty(key)) {
-                        this.postName = this.messages[key].name
-                        console.log(this.postName)
-                        if(this.user.displayName == this.postName) {
-                        this.activePosition = true
-                    } else {
-                        this.activePosition = false
-                    }
-                    console.log(this.activePosition)
-                        }
-                }
-                console.log(this.activePosition) */
-                /* console.log(myMessage)
-                console.log(this.user.displayName) */
                 console.log( myMessage == this.user.displayName)
                 return myMessage == this.user.displayName
             }

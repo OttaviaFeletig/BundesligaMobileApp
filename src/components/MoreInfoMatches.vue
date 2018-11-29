@@ -65,9 +65,10 @@
                     <img class="teams_logo" :src="homeTeamLogo" alt="team logo">
                     <h4 class="text-center">{{oneMoreInfoMatchesData.homeTeam.name}}</h4>
                 </v-flex>
-                <v-flex xs4 sm4 md4>
-                    <h3 class="text-center">{{oneMoreInfoMatchesData.utcDate}}</h3>
-                    <p class="mt-4 text-center">Time</p>
+                <v-flex xs4 sm4 md4 class="text-center" mb-5>
+                    <h5>{{matchDay}}</h5>
+                    <h5>{{matchTime}}</h5>
+                    <!-- <p class="mt-4 text-center">Time</p> -->
                 </v-flex>
                 <v-flex xs4 sm4 md4>
                     <img class="teams_logo" :src="awayTeamLogo" alt="team logo">
@@ -106,14 +107,15 @@
                 awayTeamLogo: {},
                 stadiumMap: {},
                 stadiumName: {},
-                /* matchId, */
-                oneMatch: {}
+                oneMatch: {},
+                matchDate: [],
+                matchDay: '',
+                matchTime: ''
             }
         },
         created() {
-            this.getLogo()
-            /*  this.getMatchId() */
-            /* this.getGoalList() */
+            this.getLogo(),
+            this.getMatchDayAndDate(this.oneMoreInfoMatchesData.utcDate)
         },
         methods: {
             getLogo: function () {
@@ -129,26 +131,14 @@
                     }
                 });
             },
-            /*     getMatchId: function () {
-                    this.matchId = this.oneMoreInfoMatchesData.id
-                },
-                getGoalList: function () {
-                           fetch('http://api.football-data.org/v2/matches/' + this.matchId, {
-                  method: "GET",
-                  headers: {
-                    'X-Auth-Token' : 'e44f8c35307d4bbbb267779b5515ce9e'
-                  }
-                })
-                .then(response => {
-                  return response.json();
-                })
-                .then(data => {
-                  this.oneMatch = data
-                  console.log(this.oneMatch)
-                  this.isLoading = false
-                })
-                .catch(error => alert(error));
-              } */
+            getMatchDayAndDate(date){
+                this.matchDate = date.split('T')
+                console.log(this.matchDate);
+                this.matchDay = this.matchDate[0]
+                console.log(this.matchDay)
+                this.matchTime = this.matchDate[1].slice(0, 5)
+                console.log(this.matchTime)
+            }
         }
     }
 </script>

@@ -32,8 +32,8 @@ export default {
        isLoading: true,
         matchesData: [],
         moreInfoData: [],
-        scheduleData: "http://api.football-data.org/v2/competitions/2002/matches?",
-        stadiumAndLogoData: "//api.jsonbin.io/b/5bf28c46d5de952fc52ac668/1"
+        scheduleData: "https://api.football-data.org/v2/competitions/2002/matches?",
+        stadiumAndLogoData: "https://api.jsonbin.io/b/5bf28c46d5de952fc52ac668/1"
     }
   },
   created () {
