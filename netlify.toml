@@ -1,0 +1,4 @@
+redirects = [
+    {from = "/teams", to = "/"},
+    {from = "/chat", to = "/"}
+]
