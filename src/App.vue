@@ -2,10 +2,10 @@
   
 
     <div class="body">
-      <div v-if="isLoading">
-        <p>Loading</p>
+      <!-- <div v-if="isLoading">
+        <div class="lds-dual-ring"></div>
       </div>
-      <div v-else>
+      <div v-else> -->
 
         <Logo />
     
@@ -41,7 +41,7 @@
       </div>
     
          
-    </div>
+ <!--    </div> -->
 
 
 </template>

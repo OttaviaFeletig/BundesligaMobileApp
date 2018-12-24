@@ -1,7 +1,7 @@
 <template>
   <div class="home_padding">
     <div v-if="isLoading">
-        <p>Loading</p>
+        <div class="lds-dual-ring"></div>
       </div>
       <div v-else class='white--text'>
    
@@ -117,5 +117,27 @@ export default {
     .home_padding{
     padding-bottom: 20px;
   }
+}
+
+ .lds-dual-ring {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 8px solid #2c2c2c;
+    border-color: #2c2c2c transparent #2c2c2c transparent;
+    animation: lds-dual-ring 1.5s linear infinite;
+    margin-left: 38%;
+    margin-top: 50%;
+   /*  margin-bottom: 3%; */
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 </style>

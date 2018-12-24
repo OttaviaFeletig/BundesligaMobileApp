@@ -13,7 +13,7 @@
                 </p>
             </v-flex>
             <v-flex v-else xs4 sm4 md4 mb-5>
-                <h5 class="text-center">{{matchDay}}</h5>
+                <h5 class="text-center">vs</h5>
                 <p class="mt-4 text-center">
                  
                 </p>
@@ -33,17 +33,18 @@ export default {
     props: ['oneMatchData', 'oneLogoHomeTeam', 'oneLogoAwayTeam'],
     data () { 
          return {
-             matchDay: ''
+            /*  matchDay: '' */
          }
     },
-    created(){
+  /*   mounted(){
         this.formatDate(this.oneMatchData.utcDate);
-    },
-    methods:{
+    }, */
+   /*  methods:{
         formatDate(date){
             this.matchDay = date.split('T')[0]
+            console.log(this.matchDay)
         }
-    }
+    } */
 }
 </script>
 

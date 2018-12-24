@@ -1,6 +1,6 @@
 <template>
 <div class="one_team_detail_body">
-    <!-- <GoBackTeams :allTeamsData='oneTeamDetailData'/> -->
+    
     <v-container class='white--text'>
         <v-layout row justify-center>
                 <v-flex xs8 mb-2>

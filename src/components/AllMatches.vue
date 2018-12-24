@@ -1,46 +1,23 @@
 <template>
 <div>
+
 <v-container class='white--text'>
         
     <div v-if="changeComponent">
-       <v-container>
-           <!-- <v-layout row>
-      <v-flex xs12 sm12 d-flex>
-        <v-select
-          :items="teamList"
-          outline
-          label="Choose your team"
-          prepend-icon="search"
-          dark
-          v-model='defaultSelected'
-        ></v-select>
-      </v-flex>
-    </v-layout> -->
+       <v-container fluid>
 
-    <v-layout row mt-0 mb-4>
-          <v-flex xs12 sm12 md6 d-inline-flex>
-            
-            <v-checkbox
-              label="Coming up"
-              value="SCHEDULED"
-              hide-details
-              dark
-              v-model="checkedSchedule"
-            ></v-checkbox>
-            <v-checkbox 
-              label="Finished"
-              value="FINISHED"
-              hide-details
-              dark
-              v-model="checkedSchedule"
-            ></v-checkbox>
-            <v-checkbox 
-              label="Current"
-              value="TODAY"
-              hide-details
-              dark
-              v-model="checkedSchedule"
-            ></v-checkbox>
+    <v-layout row mt-0 mb-4 align-center>
+          <v-flex xs12 sm12 md6 d-flex>
+
+              
+        <v-select class="selectStyle"
+          :items="matchDays"
+          label="Match Day"
+          outline
+          dark
+          v-model="checkedMatchDay"
+        ></v-select>
+        <v-btn round outline dark @click="getCurrentMatchDay()">Latest</v-btn>
           </v-flex>
         </v-layout>
         </v-container>
@@ -75,8 +52,13 @@ export default {
         return {
             changeComponent: true,
             selectedMatch: [],
-            checkedSchedule: []
+            checkedMatchDay: [],
+            matchDays: ["All Matches"]
         }
+    },
+    created(){
+        this.getMatchDays()
+       /*  this.getCurrentMatchDay() */
     },
     methods: {
         clickAndChange(match) {
@@ -94,16 +76,24 @@ export default {
         getLogoAwayTeam(match) {
             const oneLogoAwayTeamData = this.logoAndStadiumData.filter(el => el.id == match.awayTeam.id)
             return oneLogoAwayTeamData[0].logo 
+        },
+        getMatchDays(){
+            this.allMatchesData.forEach(match => this.matchDays.push(match.matchday))
+            console.log(this.matchDays)
+        },
+        getCurrentMatchDay(){
+            this.currentMatchday = this.allMatchesData[0].season.currentMatchday
+            console.log(this.currentMatchday)
+            this.checkedMatchDay = this.currentMatchday
         }
     },
     computed: {
         filter () {
-            if(!this.checkedSchedule.length){
+            if(this.checkedMatchDay.length == 0 || this.checkedMatchDay == "All Matches"){
             return this.allMatchesData
-            } else if (this.checkedSchedule == "TODAY"){
-                return this.allMatchesData.filter(x => x.matchday == x.season.currentMatchday)
-            } else {
-            return this.allMatchesData.filter(x => this.checkedSchedule.includes(x.status))
+            }else {
+                console.log("selected")
+            return this.allMatchesData.filter(x => x.matchday == this.checkedMatchDay)
             }
         }
     }
@@ -111,5 +101,11 @@ export default {
 </script>
 
 <style>
-
+.v-menu > .v-menu__content{
+    top: 60px !important;
+    left: -170px !important;
+}
+.v-btn{
+    margin-top: 3.5% !important;
+}
 </style>
