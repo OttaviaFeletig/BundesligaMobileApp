@@ -7,7 +7,11 @@
                         type="email"></v-text-field>
                     <v-text-field v-model="password" single-line dark label="Password" style="min-height: 96px" type="password"></v-text-field>
                     <v-btn block outline dark v-on:click="login()">Login</v-btn>
-                    <h5>You don't have an account? <v-btn flat color="blue" v-on:click="signIn()">Sign In</v-btn></h5>
+                    
+                        <h5>No account?<v-btn flat color="blue" v-on:click="signIn()">Sign In</v-btn></h5>
+                        
+                   
+                    
                    
                 </v-flex>
             </v-layout>
@@ -78,7 +82,10 @@
             };
         },
         updated(){
-            this.scrollDown();
+            if(this.loggedIn == true){
+                this.scrollDown();
+            }
+            
         },
         methods: {
             createUser() {
@@ -103,6 +110,7 @@
                         console.log(this.user);
                         this.getPosts();
                         this.defineWhoIsWriting();
+                        
                     })
                     .catch(function (error) {
                         alert("error" + error.message);
@@ -120,6 +128,7 @@
                         console.log(result)
                         console.log(this.email)
                         console.log(this.password)
+                        
                         this.loggedIn = true
                         /* var user = result.user; */
                         // let user = firebase.auth().currentUser;
@@ -127,6 +136,7 @@
                         console.log(this.user);
                         this.getPosts();
                         this.defineWhoIsWriting();
+                        
                     })
                     .catch(function (error) {
                         alert("error" + error.message);
@@ -178,6 +188,7 @@
                     });
 
                 this.loggedIn = true;
+                
             },
             defineWhoIsWriting(myMessage) {
                 console.log(myMessage == this.user);

@@ -32,15 +32,51 @@ export default {
 .map_dimension{
         width: 100vw;
         height: 50vh;
-        margin-bottom: 20px;
+        /* margin-bottom: 20px */;
         /* background-color: white; */
     }
 
-@media only screen and (max-height: 568px) {
+@media only screen and (max-height: 320px) {
+    .map_dimension{
+        width: 535px;
+        height: 200px;
+        /* margin-bottom: 5px; */
+        /* background-color: yellow; */
+    }
+}
+
+@media only screen and (min-height: 375px) and (min-width: 667px) {
+    .map_dimension{
+        width: 510px;
+        height: 200px;
+        /* margin-bottom: 5px; */
+        /* background-color: yellow; */
+    }
+}
+
+@media only screen and (min-height: 414px) {
+    .map_dimension{
+        width: 510px;
+        height: 200px;
+        /* margin-bottom: 5px; */
+        /* background-color: yellow; */
+    }
+}
+
+@media only screen and (min-height: 375px) and (min-width: 812px) {
+    .map_dimension{
+        width: 690px;
+        height: 200px;
+        /* margin-bottom: 5px; */
+        /* background-color: yellow; */
+    }
+}
+
+@media only screen and (min-height: 568px) {
     .map_dimension{
         width: 290px;
         height: 110px;
-        margin-bottom: 20px;
+        /* margin-bottom: 5px; */
         /* background-color: yellow; */
     }
 }
@@ -48,7 +84,7 @@ export default {
      .map_dimension{
         width: 340px;
         height: 190px;
-        margin-bottom: 20px;
+        /* margin-bottom: 5px; */
         /* background-color: red; */
     }
 }
@@ -56,7 +92,16 @@ export default {
     .map_dimension{
         width: 380px;
         height: 250px;
-        margin-bottom: 20px;
+        /* margin-bottom: 5px; */
+        /* background-color: blue; */
+    }
+} 
+
+@media only screen and (min-height: 768px) {
+    .map_dimension{
+        width: 925px;
+        height: 500px;
+        /* margin-bottom: 5px; */
         /* background-color: blue; */
     }
 } 
@@ -64,7 +109,7 @@ export default {
     .map_dimension{
         width: 345px;
         height: 330px;
-        margin-bottom: 20px;
+        /* margin-bottom: 5px; */
         /* background-color: pink; */
     }
 } 
@@ -72,17 +117,28 @@ export default {
     .map_dimension{
         width: 690px;
         height: 430px;
-        margin-bottom: 20px;
+        /* margin-bottom: 5px; */
         /* background-color: green; */
     }
 } 
+
+@media only screen and (min-height: 1024px) and (min-width: 1366px) {
+    .map_dimension{
+        width: 1110px;
+        height: 500px;
+        /* margin-bottom: 5px */;
+        /* background-color: green; */
+    }
+} 
+
 @media only screen and (min-height: 1336px) {
     .map_dimension{
         width: 920px;
         height: 650px;
-        margin-bottom: 20px;
+        /* margin-bottom: 5px; */
         /* background-color: lightblue; */
     }
 } 
+
 
 </style>

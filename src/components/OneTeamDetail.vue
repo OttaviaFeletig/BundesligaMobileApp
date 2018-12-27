@@ -116,7 +116,7 @@ th, td {
     padding: 15px;
     height: 30px;
 }
-
+/* 
  @media only screen and (max-height: 568px) {
    .one_team_detail_body{
     padding-bottom: 20px;
@@ -146,5 +146,5 @@ th, td {
     .one_team_detail_body{
     padding-bottom: 20px;
   }
-}
+} */
 </style>

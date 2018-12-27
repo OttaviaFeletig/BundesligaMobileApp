@@ -104,10 +104,10 @@
 
 <style>
     .team_list_body {
-        padding-bottom: 0px;
+        padding-bottom: 20px;
         padding-top: 60px;
     }
-
+/* 
     @media only screen and (max-height: 568px) {
         .team_list_body {
             padding-bottom: 170px;
@@ -142,5 +142,5 @@
         .team_list_body {
             padding-bottom: 703px;
         }
-    }
+    } */
 </style>
