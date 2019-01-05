@@ -36,12 +36,10 @@ export default {
         /* background-color: white; */
     }
 
-@media only screen and (max-height: 320px) {
+/* @media only screen and (max-height: 320px) {
     .map_dimension{
         width: 535px;
         height: 200px;
-        /* margin-bottom: 5px; */
-        /* background-color: yellow; */
     }
 }
 
@@ -49,8 +47,7 @@ export default {
     .map_dimension{
         width: 510px;
         height: 200px;
-        /* margin-bottom: 5px; */
-        /* background-color: yellow; */
+    
     }
 }
 
@@ -58,8 +55,7 @@ export default {
     .map_dimension{
         width: 510px;
         height: 200px;
-        /* margin-bottom: 5px; */
-        /* background-color: yellow; */
+        
     }
 }
 
@@ -67,33 +63,43 @@ export default {
     .map_dimension{
         width: 690px;
         height: 200px;
-        /* margin-bottom: 5px; */
-        /* background-color: yellow; */
+ 
     }
-}
+} */
 
-@media only screen and (min-height: 568px) {
+/* @media only screen and (max-height: 568px) and (orientation: portrait) {
     .map_dimension{
         width: 290px;
         height: 110px;
-        /* margin-bottom: 5px; */
-        /* background-color: yellow; */
+    
     }
 }
-@media only screen and (min-height: 667px) {
+@media only screen and (max-height: 568px) and (orientation: landscape) {
+    .map_dimension{
+        width: 535px;
+        height: 300px;
+    
+    }
+}
+@media only screen and (min-height: 667px) and (orientation: portrait) {
      .map_dimension{
         width: 340px;
         height: 190px;
-        /* margin-bottom: 5px; */
-        /* background-color: red; */
+      
+    }
+}
+@media only screen and (min-height: 667px) and (orientation: landscape) {
+     .map_dimension{
+        width: 510px;
+        height: 190px;
+      
     }
 }
 @media only screen and (min-height: 736px) {
     .map_dimension{
         width: 380px;
         height: 250px;
-        /* margin-bottom: 5px; */
-        /* background-color: blue; */
+        
     }
 } 
 
@@ -101,24 +107,21 @@ export default {
     .map_dimension{
         width: 925px;
         height: 500px;
-        /* margin-bottom: 5px; */
-        /* background-color: blue; */
+      
     }
 } 
 @media only screen and (min-height: 812px) {
     .map_dimension{
         width: 345px;
         height: 330px;
-        /* margin-bottom: 5px; */
-        /* background-color: pink; */
+        
     }
 } 
 @media only screen and (min-height: 1024px) {
     .map_dimension{
         width: 690px;
         height: 430px;
-        /* margin-bottom: 5px; */
-        /* background-color: green; */
+        
     }
 } 
 
@@ -126,8 +129,7 @@ export default {
     .map_dimension{
         width: 1110px;
         height: 500px;
-        /* margin-bottom: 5px */;
-        /* background-color: green; */
+        
     }
 } 
 
@@ -135,10 +137,109 @@ export default {
     .map_dimension{
         width: 920px;
         height: 650px;
-        /* margin-bottom: 5px; */
-        /* background-color: lightblue; */
+        
     }
-} 
+}  */
 
+@media only screen 
+  and (max-width: 320px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+        .map_dimension{
+        width: 290px;
+        height: 110px;
+    
+    }
+}
+
+/* Landscape */
+@media only screen  
+  and (max-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+       .map_dimension{
+        width: 535px;
+        height: 300px;
+    
+    }
+}
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+
+
+/* Portrait */
+@media only screen 
+  and (min-width: 375px)  
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
+ .map_dimension{
+        width: 345px;
+        height: 190px;
+      
+    }
+}
+
+/* Landscape */
+@media only screen 
+  and (min-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) { 
+      .map_dimension{
+        width: 500px;
+        height: 300px;
+      
+    }
+}
+
+/* ----------- iPhone 6+, 7+ and 8+ ----------- */
+
+/* Portrait */
+@media only screen 
+  and (min-width: 414px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+      .map_dimension{
+        width: 380px;
+        height: 250px;
+        
+    }
+}
+
+/* Landscape */
+@media only screen 
+  and (min-width: 736px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) { 
+       .map_dimension{
+        width: 510px;
+        height: 300px;
+       }
+}
+
+/* ----------- iPhone X ----------- */
+
+/* Portrait */
+@media only screen 
+  and (min-width: 375px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+      .map_dimension{
+        width: 345px;
+        height: 330px;
+        
+    }
+}
+
+/* Landscape */
+@media only screen 
+  and (min-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: landscape) { 
+      .map_dimension{
+        width: 690px;
+        height: 300px;
+ 
+    }
+}
 
 </style>
