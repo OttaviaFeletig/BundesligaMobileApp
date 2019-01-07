@@ -242,4 +242,61 @@ export default {
     }
 }
 
+/* iPad */
+/* Portrait */
+@media only screen 
+  and (min-width: 768px) 
+  and (max-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+      .map_dimension{
+        width: 690px;
+        height: 300px;
+ 
+    }
+}
+
+/* Landscape */
+@media only screen 
+  and (min-width: 768px) 
+  and (max-width: 1024px) 
+  and (orientation: landscape) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+      .map_dimension{
+        width: 930px;
+        height: 300px;
+ 
+    }
+}
+/* iPad Pro */
+
+/* Portrait */
+/* Declare the same value for min- and max-width to avoid colliding with desktops */
+/* Source: https://medium.com/connect-the-dots/css-media-queries-for-ipad-pro-8cad10e17106*/
+@media only screen 
+  and (min-width: 1024px) 
+  and (max-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+      .map_dimension{
+        width: 930px;
+        height: 500px;
+ 
+    }
+}
+
+/* Landscape */
+/* Declare the same value for min- and max-width to avoid colliding with desktops */
+/* Source: https://medium.com/connect-the-dots/css-media-queries-for-ipad-pro-8cad10e17106*/
+@media only screen 
+  and (max-width: 1366px) 
+  and (orientation: landscape) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+      .map_dimension{
+        width: 1200px;
+        height: 600px;
+ 
+    }
+}
+
 </style>
