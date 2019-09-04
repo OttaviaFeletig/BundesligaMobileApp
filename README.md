@@ -1,29 +1,7 @@
-# my_app
+Progressive web app showing schedule matches for the Bundesliga and live results.
 
-## Project setup
-```
-npm install
-```
+Download the folder. npm i to install the dependencies.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+npm run serve to run the project.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+npm run build to build the project.
