@@ -1,21 +1,18 @@
 <template>
-<v-container>
+  <v-container>
     <v-layout row>
-        <v-flex xs12 sm12 d-flex>
-            <v-text-field hide-details prepend-icon="search" single-line dark></v-text-field>
-        </v-flex>
-
+      <v-flex xs12 sm12 d-flex>
+        <v-text-field hide-details prepend-icon="search" single-line dark></v-text-field>
+      </v-flex>
     </v-layout>
-</v-container>
-    
+  </v-container>
 </template>
 
 <script>
-    export default {
-        name: 'searchBar'
-    }
+export default {
+  name: "searchBar"
+};
 </script>
 
 <style>
-
 </style>
